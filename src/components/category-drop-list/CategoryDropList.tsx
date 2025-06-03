@@ -36,7 +36,7 @@ const categories: CategoryProps[] = [
 const CategoryDropList = () => {
   // Url path info
   const pathName:string = usePathname();
-  let pageName = pathName.slice(7);
+  const pageName = pathName.slice(7);
 
   const [open, setOpen] = useState<boolean>(false)
 
