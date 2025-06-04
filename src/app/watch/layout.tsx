@@ -9,7 +9,7 @@ const WatchLayout = ({
   return (
     <div className="flex">
       <div className="flex-1">
-        <AsideNavigation />
+        <AsideNavigation/>
       </div>
       <div className="flex-4">
         {children}
