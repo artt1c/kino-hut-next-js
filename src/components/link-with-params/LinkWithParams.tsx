@@ -1,6 +1,6 @@
 'use client';
 
-import React, {FC} from 'react';
+import React, {FC, Suspense} from 'react';
 import {useSearchParams} from "next/navigation";
 import Link from "next/link";
 
@@ -18,9 +18,11 @@ const LinkWithParams:FC<LinkProps> = ({href, className, children}) => {
   const fullHref = href+'?type='+type;
 
   return (
-    <Link href={fullHref} className={className}>
-      {children}
-    </Link>
+    <Suspense>
+      <Link href={fullHref} className={className}>
+        {children}
+      </Link>
+    </Suspense>
   );
 };
 
