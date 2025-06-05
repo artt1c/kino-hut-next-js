@@ -60,11 +60,6 @@ a {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
