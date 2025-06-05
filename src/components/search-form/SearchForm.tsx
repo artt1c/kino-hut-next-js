@@ -40,7 +40,7 @@ const SearchForm = () => {
           render={({field}) => (
             <FormItem className="flex-1">
               <FormControl className="!bg-transparent shadow-none border-none transition-none ">
-                <Input className="text-xl  border-transparent placeholder:text-xl" placeholder="Movies, series, shows..." {...field} />
+                <Input className="text-xl  border-transparent placeholder:text-xl" placeholder="Home, series, shows..." {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
