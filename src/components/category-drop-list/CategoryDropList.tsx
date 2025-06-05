@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useState} from "react";
-import {useSearchParams} from "next/navigation";
+import {usePathname, useSearchParams} from "next/navigation";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {Button} from "@/components/ui/button";
 import {ChevronDown} from "lucide-react";
@@ -26,7 +26,8 @@ const CategoryDropList = () => {
   // Url path info
   const searchParams = useSearchParams();
   const type = searchParams.get('type') || 'movies';
-  const params = '/?type=';
+  const pathname = usePathname();
+  const hrefBase = pathname + '?type=';
 
   const [open, setOpen] = useState<boolean>(false)
 
@@ -49,7 +50,7 @@ const CategoryDropList = () => {
           <CommandList>
             <CommandGroup>
               {categories.map((category, id) => (
-                <Link href={params+category.value} key={id}>
+                <Link href={hrefBase+category.value} key={id}>
                   <CommandItem
                     className={cn("text-lg font-bold capitalize", type === category.value ? 'hidden' : '')}
                     value={category.value}
