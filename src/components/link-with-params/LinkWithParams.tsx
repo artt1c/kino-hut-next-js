@@ -18,7 +18,7 @@ const LinkWithParams:FC<LinkProps> = ({href, className, children}) => {
   const fullHref = href+'?type='+type;
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Link href={fullHref} className={className}>
         {children}
       </Link>

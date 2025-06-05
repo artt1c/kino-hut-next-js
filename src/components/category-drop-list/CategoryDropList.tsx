@@ -31,7 +31,7 @@ const CategoryDropList = () => {
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
