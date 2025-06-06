@@ -26,7 +26,8 @@
     "react-hook-form": "^7.57.0",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.8",
-    "zod": "^3.25.49"
+    "zod": "^3.25.49",
+    "cookies-next": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
