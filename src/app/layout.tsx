@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 import {ReactNode} from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 
@@ -19,11 +19,12 @@ export const metadata: Metadata = {
   description: "KinoHut is a platform to watch movies and TV shows online in HD quality without registration",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+
   return (
     <html lang="en" className={'dark'}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
