@@ -9,7 +9,7 @@ const ContentSecurityPolicy = `
   img-src 'self' data: https:;
   font-src 'self' https://fonts.gstatic.com;
   connect-src 'self' https://api.themoviedb.org https://vercel.live;
-  frame-src 'none';
+  frame-src ${isProd ? "'none'" : "https://vercel.live"};
   object-src 'none';
 `;
 
