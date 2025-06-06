@@ -4,10 +4,11 @@ const isProd = process.env.NODE_ENV === "production";
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self';
+  script-src 'self' 'unsafe-inline' https://vercel.live;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https:;
-  connect-src 'self' https://api.themoviedb.org;
+  font-src 'self' https://fonts.gstatic.com;
+  connect-src 'self' https://api.themoviedb.org https://vercel.live;
   frame-src 'none';
   object-src 'none';
 `;
