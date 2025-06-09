@@ -2,6 +2,10 @@ const baseUrl = 'https://api.themoviedb.org/3'
 export const apiUrls = {
   auth: {
     guest: baseUrl+'/authentication/guest_session/new',
+  },
+
+  movie: {
+    topRated: baseUrl+'/movie/top_rated',
   }
 };
 
