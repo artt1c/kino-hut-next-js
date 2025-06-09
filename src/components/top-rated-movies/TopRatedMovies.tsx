@@ -1,36 +1,35 @@
 'use client';
 
-import React, {FC, useEffect, useState} from 'react';
-import {IMoviesList, ITopRated} from "@/model/ITopRated";
+import React, {FC, useState} from 'react';
+import {IMoviesList} from "@/model/ITopRated";
 import {imagesUrl} from "@/urls/Urls";
 import {Swiper, SwiperSlide} from "swiper/react";
+import {Autoplay, EffectCreative, Mousewheel, Pagination} from "swiper/modules";
+import {cn} from "@/lib/utils";
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import {Autoplay, EffectCreative, Pagination} from "swiper/modules";
-import {cn} from "@/lib/utils";
+import GenresList from "@/components/genres-list/GenresList";
+import Image from "next/image";
 
 type Props = {
-  moviesListProps: ITopRated;
+  moviesList: IMoviesList[];
+  genres: Map<number, string>;
 }
 
-const TopRatedMovies:FC<Props> = ({moviesListProps}) => {
-  const [moviesList, setMoviesList] = useState<IMoviesList[] | null>(null)
+const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
 
   const [activeIndex, setActiveIndex] = useState<number>(0)
-
-  useEffect(() => {
-    setMoviesList(moviesListProps?.results);
-  }, [moviesListProps]);
 
   return (
     <div className='w-[75vw]'>
       <Swiper
         className='!m-0 relative'
         slidesPerView={"auto"}
-        grabCursor={true}
+        mousewheel={{
+          enabled: true,
+        }}
         autoplay={{
           delay: 5000,
           disableOnInteraction: true,
@@ -61,7 +60,7 @@ const TopRatedMovies:FC<Props> = ({moviesListProps}) => {
             translate: ['30%', 0, -300],
           },
         }}
-        modules={[EffectCreative, Pagination, Autoplay]}
+        modules={[EffectCreative, Pagination, Autoplay, Mousewheel]}
       >
         {
         moviesList?.map((movie, id) => (
@@ -77,8 +76,37 @@ const TopRatedMovies:FC<Props> = ({moviesListProps}) => {
                 backgroundPosition: "center",
               }}
             ></div>
-            <div className={cn('w-full h-full p-5 relative', id === activeIndex ? 'z-20' : '')}>
-              {movie.title}
+
+            <div className={cn('w-full h-full p-5 relative flex flex-col justify-between', id === activeIndex ? 'flex' : 'hidden')}>
+              <GenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
+
+              <div className='flex justify-between items-end'>
+                <div className='bg-[rgba(109,106,103,.5)] w-fit px-2 py-1.5 rounded-2xl font-bold flex'>
+                  <div className='rounded-full border-2 border-amber-50 p-2'>
+                    <Image
+                      className='pl-1'
+                      src='/play-button.svg'
+                      alt={movie.title}
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                  <div className='px-3'>
+                    {movie.title}
+                    <br/>
+                    <span className='font-normal'>Play trailer</span>
+                  </div>
+                </div>
+
+                <button className='rounded-full bg-[rgba(109,106,103,.5)] border-2 border-black p-2 pb-1.5 h-fit w-fit invert-100 cursor-pointer'>
+                  <Image
+                    src='/like.svg'
+                    alt='like'
+                    width={30}
+                    height={30}
+                  />
+                </button>
+              </div>
             </div>
           </SwiperSlide>
         ))
