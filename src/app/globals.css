@@ -154,6 +154,6 @@ a {
 
 
 /* Swiper */
-.swiper-pagination {
-  @apply !absolute !top-2 !right-[-24px] !left-auto h-fit
+.swiper-slide-active .info {
+  @apply flex
 }
