@@ -1,11 +1,10 @@
 'use client';
 
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {IMoviesList} from "@/model/ITopRated";
 import {imagesUrl} from "@/urls/Urls";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, EffectCreative, Mousewheel, Pagination} from "swiper/modules";
-import {cn} from "@/lib/utils";
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
@@ -20,7 +19,6 @@ type Props = {
 
 const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
 
-  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   return (
     <div className='w-[75vw]'>
@@ -38,7 +36,6 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
         loop={!!moviesList?.length}
         onSlideChange={(swiper)=> {
           const activeIndex = swiper.activeIndex
-          setActiveIndex(activeIndex)
           const next = swiper.slides[activeIndex+1]
           if (next) {
             swiper.slides[activeIndex].style.filter = 'brightness(100%)'
@@ -77,7 +74,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
               }}
             ></div>
 
-            <div className={cn('w-full h-full p-5 relative flex flex-col justify-between', id === activeIndex ? 'flex' : 'hidden')}>
+            <div className='info w-full h-full p-5 relative flex-col justify-between hidden'>
               <GenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
 
               <div className='flex justify-between items-end'>
