@@ -5,7 +5,7 @@ import SuspenseWrapper from "@/components/suspense-wrapper/SuspenseWrapper";
 
 const AsideNavigation = () => {
   return (
-    <aside className="text-2xl font-semibold">
+    <aside className="text-2xl font-semibold py-4">
 
       <ul className="mb-12">
         <li>
