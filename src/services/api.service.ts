@@ -1,4 +1,6 @@
 import {apiUrls} from "@/urls/Urls";
+import apiRequest from "@/helpers/api-helper";
+import {ITopRated} from "@/model/ITopRated";
 
 type AuthType = {
   success: boolean;
@@ -8,29 +10,20 @@ type AuthType = {
 const apiService = {
   auth: {
     guest: async ():Promise<AuthType> => {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 5000);
+      return await apiRequest<AuthType>('POST', apiUrls.auth.guest)
 
-      const options = {
-        method: 'POST',
-        headers: {
-          accept: 'application/json',
-          'content-type': 'application/json',
-          Authorization:  'Bearer ' + process.env.API_KEY
-        },
-        signal: controller.signal
-      }
-      try {
-        const res = await fetch(apiUrls.auth.guest, options);
-        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-        return  res.json();
-      } catch (e) {
-        console.error(e)
-        throw e;
-      } finally {
-        clearTimeout(timeout);
-      }
     }
+  },
+
+  movie: {
+    topRated: async (page:number = 1, lang:string = 'en-US', region:string | null = null) => {
+      const urlParams = `?language=${lang}&page=${page}` + (region !== null ? `&region=${region}` : '');
+      return await apiRequest<ITopRated>('GET', apiUrls.movie.topRated + urlParams)
+    }
+  },
+
+  tv: {
+
   }
 };
 

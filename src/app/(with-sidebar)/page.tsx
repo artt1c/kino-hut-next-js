@@ -1,9 +1,14 @@
 import React from 'react';
+import TopRatedMovies from "@/components/top-rated-movies/TopRatedMovies";
+import apiService from "@/services/api.service";
 
-const Home = () => {
+const Home = async () => {
+
+  const topRateMovies =await apiService.movie.topRated()
+
   return (
     <div>
-      Home
+      <TopRatedMovies moviesListProps={topRateMovies}/>
     </div>
   );
 };

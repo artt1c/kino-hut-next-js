@@ -134,6 +134,13 @@ a {
 
   /*CUSTOM*/
   --interactive: oklch(0.3323 0.0022 247.89);
+
+  /* Swiper */
+  --swiper-theme-color: #FFFDFFFF;
+  --swiper-pagination-color: #FFFDFFFF;
+  --swiper-pagination-bullet-inactive-color: #6e6666;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+  --swiper-pagination-bullet-size: 12px;
 }
 
 @layer base {
@@ -143,4 +150,10 @@ a {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Swiper */
+.swiper-pagination {
+  @apply !absolute !top-2 !right-[-24px] !left-auto h-fit
 }
