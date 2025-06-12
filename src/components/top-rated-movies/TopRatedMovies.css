@@ -1,0 +1,9 @@
+.top-rate-movies .swiper-slide-active .info {
+    @apply flex
+}
+
+.top-rate-movies .swiper-pagination {
+    top: 2px !important;
+    left: auto !important;
+    right: -30px !important;
+}

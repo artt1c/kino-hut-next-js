@@ -1,16 +1,17 @@
 'use client';
 
 import React, {FC} from 'react';
-import {IMoviesList} from "@/model/ITopRated";
+import Image from "next/image";
 import {imagesUrl} from "@/urls/Urls";
+import {IMoviesList} from "@/model/ITopRated";
+import MovieGenresList from "@/components/movie-genres-list/MovieGenresList";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, EffectCreative, Mousewheel, Pagination} from "swiper/modules";
+import './TopRatedMovies.css';
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
-import GenresList from "@/components/genres-list/GenresList";
-import Image from "next/image";
 
 type Props = {
   moviesList: IMoviesList[];
@@ -21,7 +22,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
 
 
   return (
-    <div className='w-[75vw]'>
+    <div className='top-rate-movies w-[75vw] mb-8'>
       <Swiper
         className='!m-0 relative'
         slidesPerView={"auto"}
@@ -75,7 +76,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
             ></div>
 
             <div className='info w-full h-full p-5 relative flex-col justify-between hidden'>
-              <GenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
+              <MovieGenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
 
               <div className='flex justify-between items-end'>
                 <div className='bg-[rgba(109,106,103,.5)] w-fit px-2 py-1.5 rounded-2xl font-bold flex'>
@@ -109,6 +110,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
         ))
         }
       </Swiper>
+
     </div>
   );
 };

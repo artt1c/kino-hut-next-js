@@ -1,7 +1,7 @@
 import {apiUrls} from "@/urls/Urls";
 import apiRequest from "@/helpers/api-helper";
 import {ITopRated} from "@/model/ITopRated";
-import {IGenres} from "@/model/IGenres";
+import {IGenre, IGenres} from "@/model/IGenres";
 
 type AuthType = {
   success: boolean;
@@ -28,10 +28,9 @@ const apiService = {
   },
 
   genre: {
-    movieMapList: async (lang:string = 'en-US'):Promise<Map<number, string>> => {
+    movieMapList: async (lang:string = 'en-US'):Promise<IGenre[]> => {
       const urlParams = `?language=${lang}`;
-      const {genres} = await apiRequest<IGenres>('GET', apiUrls.genre.moviesList + urlParams);
-      return new Map<number, string>(genres.map(genre => [genre.id, genre.name]));
+        return (await apiRequest<IGenres>('GET', apiUrls.genre.moviesList + urlParams)).genres;
     }
   }
 };
