@@ -133,7 +133,7 @@ a {
   --sidebar-ring: oklch(0.556 0 0);
 
   /*CUSTOM*/
-  --interactive: oklch(0.3323 0.0022 247.89);
+  --interactive: oklch(0.298 0.001 17.238);
 
   /* Swiper */
   --swiper-theme-color: #FFFDFFFF;
@@ -150,10 +150,4 @@ a {
   body {
     @apply bg-background text-foreground;
   }
-}
-
-
-/* Swiper */
-.swiper-slide-active .info {
-  @apply flex
 }

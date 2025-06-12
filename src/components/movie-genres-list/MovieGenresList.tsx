@@ -5,7 +5,7 @@ type Props = {
   date: string;
 }
 
-const GenresList:FC<Props> = ({genres, date}) => {
+const MovieGenresList:FC<Props> = ({genres, date}) => {
   return (
     <div className='flex gap-3'>
       {
@@ -24,4 +24,4 @@ const GenresList:FC<Props> = ({genres, date}) => {
     </div>
   );
 };
-export default GenresList;
+export default MovieGenresList;
