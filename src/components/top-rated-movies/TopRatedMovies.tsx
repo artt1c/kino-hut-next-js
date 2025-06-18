@@ -3,18 +3,18 @@
 import React, {FC} from 'react';
 import Image from "next/image";
 import {imagesUrl} from "@/urls/Urls";
-import {IMoviesList} from "@/model/ITopRated";
 import MovieGenresList from "@/components/movie-genres-list/MovieGenresList";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, EffectCreative, Mousewheel, Pagination} from "swiper/modules";
-import './TopRatedMovies.css';
+import {IMovie} from "@/model/IMovie";
 
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
+import './TopRatedMovies.css';
 
 type Props = {
-  moviesList: IMoviesList[];
+  moviesList: IMovie[];
   genres: Map<number, string>;
 }
 
@@ -22,7 +22,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
 
 
   return (
-    <div className='top-rate-movies w-[75vw] mb-8'>
+    <section className='top-rate-movies w-[75vw] mb-8'>
       <Swiper
         className='!m-0 relative'
         slidesPerView={"auto"}
@@ -111,7 +111,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
         }
       </Swiper>
 
-    </div>
+    </section>
   );
 };
 

@@ -1,7 +1,8 @@
 import {apiUrls} from "@/urls/Urls";
 import apiRequest from "@/helpers/api-helper";
-import {ITopRated} from "@/model/ITopRated";
 import {IGenre, IGenres} from "@/model/IGenres";
+import {IMoviesResponse} from "@/model/IMoviesResponse";
+
 
 type AuthType = {
   success: boolean;
@@ -17,9 +18,15 @@ const apiService = {
   },
 
   movie: {
-    topRated: async (page:number = 1, lang:string = 'en-US', region:string | null = null) => {
+    topRated: async (page:number = 1, lang:string = 'en-US', region:string | null = null):Promise<IMoviesResponse> => {
       const urlParams = `?language=${lang}&page=${page}` + (region !== null ? `&region=${region}` : '');
-      return await apiRequest<ITopRated>('GET', apiUrls.movie.topRated + urlParams)
+      return await apiRequest<IMoviesResponse>('GET', apiUrls.movie.topRated + urlParams)
+    },
+
+    byGenre: async (genre:string, page:number = 1, lang:string = 'en-US', region:string | null = null):Promise<IMoviesResponse> => {
+      const urlParams = `?with_genres=${genre}&language=${lang}&page=${page}` + (region !== null ? `&region=${region}` : '');
+      console.log(apiUrls.discover.movie + urlParams)
+      return await apiRequest<IMoviesResponse>('GET', apiUrls.discover.movie + urlParams)
     }
   },
 
@@ -28,7 +35,7 @@ const apiService = {
   },
 
   genre: {
-    movieMapList: async (lang:string = 'en-US'):Promise<IGenre[]> => {
+    movieGenresList: async (lang:string = 'en-US'):Promise<IGenre[]> => {
       const urlParams = `?language=${lang}`;
         return (await apiRequest<IGenres>('GET', apiUrls.genre.moviesList + urlParams)).genres;
     }
