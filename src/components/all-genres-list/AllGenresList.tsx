@@ -27,7 +27,7 @@ const AllGenresList:FC<Props> = ({genres, lift}) => {
        .then(data => {
          lift(data)
        })
-  }, [selectGenre, lift]);
+  }, [selectGenre]);
 
   return (
     <Swiper
