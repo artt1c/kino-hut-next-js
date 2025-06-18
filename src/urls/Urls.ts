@@ -8,6 +8,10 @@ export const apiUrls = {
     topRated: baseUrl+'/movie/top_rated',
   },
 
+  discover: {
+    movie: baseUrl+'/discover/movie',
+  },
+
   genre: {
     moviesList: baseUrl+'/genre/movie/list',
   }

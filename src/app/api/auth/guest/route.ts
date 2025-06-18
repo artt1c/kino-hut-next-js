@@ -12,11 +12,11 @@ export async function GET() {
 
   const response = await apiService.auth.guest();
 
-    cookieStore.set('session_id', JSON.stringify(response), {
-      path: '/',
-      httpOnly: true,
-      maxAge: 60 * 60 * 24,
-    });
+  cookieStore.set('session_id', JSON.stringify(response), {
+    path: '/',
+    httpOnly: true,
+    maxAge: 60 * 60 * 24,
+  });
 
   return NextResponse.json(response);
 }

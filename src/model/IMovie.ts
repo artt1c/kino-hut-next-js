@@ -1,4 +1,4 @@
-export interface IMoviesList {
+export interface IMovie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,11 +13,4 @@ export interface IMoviesList {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
-
-export interface  ITopRated {
-  page: number;
-  results: IMoviesList[];
-  total_pages: number,
-  total_results: number,
 }
