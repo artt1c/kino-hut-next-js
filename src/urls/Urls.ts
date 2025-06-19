@@ -8,6 +8,11 @@ export const apiUrls = {
     topRated: baseUrl+'/movie/top_rated',
   },
 
+  trending: {
+    day: baseUrl+'/trending/movie/day',
+    week: baseUrl+'/trending/movie/week',
+  },
+
   discover: {
     movie: baseUrl+'/discover/movie',
   },

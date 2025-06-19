@@ -21,28 +21,27 @@ const MoviesListByGenre:FC<Props> = ({moviesList}) => {
   }, [moviesList]);
 
   return (
-    <div className='w-[75vw]'>
-      <Swiper
-        slidesPerView={'auto'}
-        initialSlide={0}
-        onSwiper={(swiperInstance) => {
-          swiperRef.current = swiperInstance;
-        }}
-        spaceBetween={15}
-        mousewheel={{
-          enabled: true,
-        }}
-        modules={[Mousewheel]}
-      >
-        {
-          moviesList?.results.map(movie => (
-            <SwiperSlide key={movie.id} className='!w-fit'>
-              <MovieCardForList movie={movie}/>
-            </SwiperSlide>
-          ))
-        }
-      </Swiper>
-    </div>
+    <Swiper
+      speed={300}
+      slidesPerView={'auto'}
+      initialSlide={0}
+      onSwiper={(swiperInstance) => {
+        swiperRef.current = swiperInstance;
+      }}
+      spaceBetween={15}
+      mousewheel={{
+        enabled: true,
+      }}
+      modules={[Mousewheel]}
+    >
+      {
+        moviesList?.results.map(movie => (
+          <SwiperSlide key={movie.id} className='!w-fit'>
+            <MovieCardForList movie={movie}/>
+          </SwiperSlide>
+        ))
+      }
+    </Swiper>
   );
 };
 

@@ -11,18 +11,16 @@ import {IMovie} from "@/model/IMovie";
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
-import './TopRatedMovies.css';
+import './TrendingMovies.css';
 
 type Props = {
   moviesList: IMovie[];
   genres: Map<number, string>;
 }
 
-const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
-
-
+const TrendingMovies:FC<Props> = ({moviesList, genres}) => {
   return (
-    <section className='top-rate-movies w-[75vw] mb-8'>
+    <section className='top-rate-movies mb-8'>
       <Swiper
         className='!m-0 relative'
         slidesPerView={"auto"}
@@ -55,7 +53,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
             scale: 0.8,
           },
           next: {
-            translate: ['30%', 0, -300],
+            translate: ['25%', 0, -300],
           },
         }}
         modules={[EffectCreative, Pagination, Autoplay, Mousewheel]}
@@ -63,19 +61,17 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
         {
         moviesList?.map((movie, id) => (
           <SwiperSlide
-            className={'!w-[65vw] !h-[30vw] rounded-3xl relative'}
+            className={'rounded-3xl !w-[90%] !h-auto'}
             key={id}
           >
-            <div
-              className='w-full h-full absolute top-0 left-0'
-              style={{
-                backgroundImage: `url(${imagesUrl.base_url+ imagesUrl.backdrop_sizes[2] + movie.backdrop_path})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></div>
-
-            <div className='info w-full h-full p-5 relative flex-col justify-between hidden'>
+            <Image
+              src={imagesUrl.base_url+ imagesUrl.backdrop_sizes[2] + movie.backdrop_path}
+              alt={movie.title}
+              width={1280}
+              height={720}
+              className='relative w-full object-cover object-center aspect-[21/9]'
+            />
+            <div className='absolute top-0 left-0 info w-full h-full p-5 flex-col justify-between hidden'>
               <MovieGenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
 
               <div className='flex justify-between items-end'>
@@ -106,6 +102,7 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
                 </button>
               </div>
             </div>
+
           </SwiperSlide>
         ))
         }
@@ -115,4 +112,4 @@ const TopRatedMovies:FC<Props> = ({moviesList, genres}) => {
   );
 };
 
-export default TopRatedMovies;
+export default TrendingMovies;

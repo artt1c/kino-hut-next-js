@@ -1,5 +1,5 @@
 import React from 'react';
-import InProgress from "@/components/inprogress/InProgress";
+import InProgress from "@/components/in-progress/InProgress";
 
 const Upcoming = () => {
   return (
