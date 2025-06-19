@@ -18,9 +18,9 @@ const apiService = {
   },
 
   movie: {
-    topRated: async (page:number = 1, lang:string = 'en-US', region:string | null = null):Promise<IMoviesResponse> => {
-      const urlParams = `?language=${lang}&page=${page}` + (region !== null ? `&region=${region}` : '');
-      return await apiRequest<IMoviesResponse>('GET', apiUrls.movie.topRated + urlParams)
+    trending: async (page:number = 1, lang:string = 'en-US'):Promise<IMoviesResponse> => {
+      const urlParams = `?language=${lang}&page=${page}`;
+      return await apiRequest<IMoviesResponse>('GET', apiUrls.trending.day + urlParams)
     },
 
     byGenre: async (genre:string, page:number = 1, lang:string = 'en-US', region:string | null = null):Promise<IMoviesResponse> => {

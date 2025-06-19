@@ -31,7 +31,7 @@ const AllGenresList:FC<Props> = ({genres, lift}) => {
 
   return (
     <Swiper
-      className="all_genres-list !m-0 !mb-6"
+      className="all_genres-list !w-full !m-0 !mb-5 !pb-1"
       spaceBetween={10}
       mousewheel={{
         enabled: true,

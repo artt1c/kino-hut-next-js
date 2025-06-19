@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="flex items-center h-auto py-8">
 
-      <div className="flex-1">
+      <div className="flex-1 max-w-72">
         <SuspenseWrapper>
           <LinkWithParams href="/" className="flex items-center gap-2 w-fit font-bold text-3xl">
             <svg className="size-9" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -29,15 +29,17 @@ const Header = () => {
         </SuspenseWrapper>
       </div>
 
-      <div className="flex items-center gap-4 flex-4">
-        <SuspenseWrapper>
-          <CategoryDropList/>
-        </SuspenseWrapper>
-        <SearchForm/>
-        <Button className="h-12 rounded-xl bg-(--interactive) text-(--foreground-main)">
-          <Bell className="size-6"/>
-        </Button>
-        <AccountMenu/>
+      <div className='flex-4 flex justify-center'>
+        <div className="flex-1 flex items-center gap-4 max-w-[1680px]">
+          <SuspenseWrapper>
+            <CategoryDropList/>
+          </SuspenseWrapper>
+          <SearchForm/>
+          <Button className="h-12 rounded-xl bg-(--interactive) text-(--foreground-main)">
+            <Bell className="size-6"/>
+          </Button>
+          <AccountMenu/>
+        </div>
       </div>
     </header>
   );
