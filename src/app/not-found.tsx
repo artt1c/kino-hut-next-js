@@ -9,8 +9,9 @@ export default function NotFound() {
           className='rounded-4xl'
           src={'/okak.webp'}
           alt={'404'}
+          priority={true}
           width={600}
-          height={600}
+          height={730}
         />
       </div>
       <div className='flex flex-col items-center justify-center'>

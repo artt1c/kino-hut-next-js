@@ -10,7 +10,8 @@ const apiRequest = async <T>(method:string, url:string):Promise<T> => {
       Authorization:  'Bearer ' + process.env.API_KEY
     },
     signal: controller.signal,
-    cache: 'GET' === method? 'force-cache' : 'default'
+    cache: 'GET' === method? 'force-cache' : 'default',
+    next: { revalidate: 86400 } // 1d
   }
 
   try {
