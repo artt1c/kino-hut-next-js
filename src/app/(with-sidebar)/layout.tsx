@@ -7,11 +7,11 @@ const WatchLayout = ({
   children:ReactNode;
 }>) => {
   return (
-    <div className="flex justify-start gap-3">
+    <div className="flex justify-start gap-4">
       <div className="flex-1 max-w-72">
         <AsideNavigation/>
       </div>
-      <div className="flex-4 shrink min-h-dvh">
+      <div className="flex-4 shrink">
         <div className='max-w-[1680px] mx-auto'>
           {children}
         </div>

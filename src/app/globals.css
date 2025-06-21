@@ -134,6 +134,7 @@ a {
 
   /*CUSTOM*/
   --interactive: oklch(0.298 0.001 17.238);
+  --background-transparent: rgba(14, 21, 24, .6);
 
   /* Swiper */
   --swiper-theme-color: #FFFDFFFF;

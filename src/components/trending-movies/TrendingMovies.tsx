@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/effect-creative';
 import 'swiper/css/pagination';
 import './TrendingMovies.css';
+import Link from "next/link";
 
 type Props = {
   moviesList: IMovie[];
@@ -67,42 +68,44 @@ const TrendingMovies:FC<Props> = ({moviesList, genres}) => {
             <Image
               src={imagesUrl.base_url+ imagesUrl.backdrop_sizes[2] + movie.backdrop_path}
               alt={movie.title}
+              priority={true}
               width={1280}
               height={720}
-              className='relative w-full object-cover object-center aspect-[21/9]'
+              className='w-full object-cover object-center aspect-[21/9]'
             />
-            <div className='absolute top-0 left-0 info w-full h-full p-5 flex-col justify-between hidden'>
-              <MovieGenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
+            <Link href={'/movies/' + movie.id}>
 
-              <div className='flex justify-between items-end'>
-                <div className='bg-[rgba(109,106,103,.5)] w-fit px-2 py-1.5 rounded-2xl font-bold flex'>
-                  <div className='rounded-full border-2 border-amber-50 p-2'>
+              <div className='absolute top-0 left-0 info w-full h-full p-5 flex-col justify-between hidden'>
+                <MovieGenresList date={movie.release_date} genres={movie.genre_ids.map(id => genres.get(id))}/>
+                <div className='flex justify-between items-end'>
+                  <div className='bg-[rgba(109,106,103,.5)] w-fit px-2 py-1.5 rounded-2xl font-bold flex'>
+                    <div className='rounded-full border-2 border-amber-50 p-2'>
+                      <Image
+                        className='pl-1'
+                        src='/play-button.svg'
+                        alt={movie.title}
+                        width={30}
+                        height={30}
+                      />
+                    </div>
+                    <div className='px-3'>
+                      {movie.title}
+                      <br/>
+                      <span className='font-normal'>Play trailer</span>
+                    </div>
+                  </div>
+
+                  <button className='rounded-full bg-[rgba(109,106,103,.5)] border-2 border-black p-2 pb-1.5 h-fit w-fit invert-100 cursor-pointer'>
                     <Image
-                      className='pl-1'
-                      src='/play-button.svg'
-                      alt={movie.title}
+                      src='/like.svg'
+                      alt='like'
                       width={30}
                       height={30}
                     />
-                  </div>
-                  <div className='px-3'>
-                    {movie.title}
-                    <br/>
-                    <span className='font-normal'>Play trailer</span>
-                  </div>
+                  </button>
                 </div>
-
-                <button className='rounded-full bg-[rgba(109,106,103,.5)] border-2 border-black p-2 pb-1.5 h-fit w-fit invert-100 cursor-pointer'>
-                  <Image
-                    src='/like.svg'
-                    alt='like'
-                    width={30}
-                    height={30}
-                  />
-                </button>
               </div>
-            </div>
-
+            </Link>
           </SwiperSlide>
         ))
         }
