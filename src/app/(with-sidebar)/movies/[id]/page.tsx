@@ -2,13 +2,12 @@ import React, {FC} from 'react';
 import {IMovieFull} from "@/model/IMovieFull";
 import apiService from "@/services/api.service";
 import MovieHeader from "@/components/movie-header/MovieHeader";
+import MovieBody from "@/components/movie-body/MovieBody";
 
 type Params = Promise<{ id:string }>;
-// type SearchParams = Promise<{ [key:string]:string | undefined}>;
 
 type Props = {
   params: Params;
-  // searchParams: SearchParams;
 }
 
 const MoviePage:FC<Props> = async ({params}) => {
@@ -19,6 +18,7 @@ const MoviePage:FC<Props> = async ({params}) => {
   return (
     <div>
       <MovieHeader movie={movie}/>
+      <MovieBody movie={movie}/>
     </div>
   );
 };

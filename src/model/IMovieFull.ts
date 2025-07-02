@@ -1,10 +1,3 @@
-export interface Belongs_to_collection {
-  id: number;
-  name: string;
-  poster_path: string;
-  backdrop_path: string;
-}
-
 export interface Genres {
   id: number;
   name: string;
@@ -12,7 +5,7 @@ export interface Genres {
 
 export interface Production_companies {
   id: number;
-  logo_path: string;
+  logo_path: string | null;
   name: string;
   origin_country: string;
 }
@@ -28,10 +21,27 @@ export interface Spoken_language {
   name: string;
 }
 
+export interface IVideo {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+}
+
+export interface IVideos {
+  results: IVideo[];
+}
+
 export interface IMovieFull {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: Belongs_to_collection;
+  belongs_to_collection: string | null;
   budget: number;
   genres: Genres[];
   homepage: string;
@@ -55,4 +65,5 @@ export interface IMovieFull {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  videos: IVideos;
 }
