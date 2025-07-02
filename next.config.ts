@@ -7,9 +7,9 @@ const ContentSecurityPolicy = `
   script-src 'self' 'unsafe-inline' https://vercel.live;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https:;
-  font-src 'self' https://fonts.gstatic.com;
+  font-src 'self' https://fonts.gstatic.com data:;
   connect-src 'self' https://api.themoviedb.org https://vercel.live;
-  frame-src ${isProd ? "'none'" : "https://vercel.live"};
+  frame-src https://www.youtube.com ${isProd ? "" : "https://vercel.live"};
   object-src 'none';
 `;
 
