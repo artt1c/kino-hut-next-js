@@ -12,9 +12,9 @@ const WatchLayout = ({
         <AsideNavigation/>
       </div>
       <div className="flex-4 shrink">
-        <div className='max-w-[1680px] mx-auto'>
+        <main className='max-w-[1516px]  3xl:max-w-[1680px] mx-auto'>
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );

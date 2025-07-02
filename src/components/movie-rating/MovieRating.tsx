@@ -1,6 +1,6 @@
 'use client'
 
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {Rating} from "@mui/material";
 
 type Props = {
@@ -9,14 +9,28 @@ type Props = {
 
 const MovieRating:FC<Props> = ({rating}) => {
 
+  const [userRating, setUserRating] = useState<number>(rating/2)
 
   return (
-    <div className='flex items-center mb-8 bg-gray-500 py-1 px-3 rounded-2xl w-fit'>
+    <div className='flex items-center mb-8 bg-[rgba(109,106,103,.5)] py-1 px-3 rounded-2xl w-fit'>
       <Rating
-        name="simple-controlled"
-        className=''
-        value={rating/2}
-        onChange={(event, newValue) => {
+        className='mr-3'
+        name="full-stars-only"
+        value={userRating}
+        defaultValue={rating/2}
+        precision={0.5}
+        sx={{
+          '& .MuiRating-iconFilled': {
+            color: '#FFFDFFFF',
+          },
+          '& .MuiRating-iconEmpty': {
+            color: '#FFFDFFFF',
+          }
+        }}
+        onChange={(_, newValue) => {
+          if (newValue) {
+            setUserRating(newValue)
+          }
           console.log(newValue);
         }}
       />

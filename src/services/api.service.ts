@@ -30,7 +30,7 @@ const apiService = {
     },
 
     details: async (id:string, lang:string = 'en-US'):Promise<IMovieFull> => {
-      const urlParams = `?language=${lang}`;
+      const urlParams = `?language=${lang}&append_to_response=videos`;
       return await apiRequest<IMovieFull>('GET', apiUrls.movie.base + '/'+id + urlParams)
     }
   },
