@@ -5,7 +5,7 @@ export interface Genres {
 
 export interface Production_companies {
   id: number;
-  logo_path?: any;
+  logo_path: string | null;
   name: string;
   origin_country: string;
 }
@@ -41,7 +41,7 @@ export interface IVideos {
 export interface IMovieFull {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection?: any;
+  belongs_to_collection: string | null;
   budget: number;
   genres: Genres[];
   homepage: string;
